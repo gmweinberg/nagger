@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=My Startup Script
+Path=/home/gweinberg/projects/nagger
+Exec=/home/gweinberg/projects/nagger/nag.py
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
