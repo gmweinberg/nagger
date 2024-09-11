@@ -2,6 +2,6 @@
 Type=Application
 Name=My Startup Script
 Path=/home/gweinberg/projects/nagger
-Exec=/home/gweinberg/projects/nagger/nag.py
+Exec=/home/gweinberg/projects/nagger/nag.py >> /home/gweinberg/docs/log 2>&1
 StartupNotify=false
 X-GNOME-Autostart-enabled=true

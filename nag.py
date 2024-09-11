@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Check if there are tasks which are overdue. If so, naag the user."""
+"""Check if there are tasks which are overdue. If so, nag the user."""
 import time
 import tkinter as tk
 from datetime import datetime, timedelta
@@ -40,9 +40,9 @@ def load_tasks():
     tasks['est2'] = {'cal':True, 'monthly':False, 'when':'6/12'}
     tasks['est3'] = {'cal':True, 'monthly':False, 'when':'9/12'}
     tasks['est4'] = {'cal':True, 'monthly':False, 'when':'1/12'}
+    tasks['statements'] =  {'cal':True, 'monthly':True, 'when':'10'}
     tasks['draino'] = {'cal':False, 'elapsed':'60'}
     tasks['vacuum'] = {'cal':False, 'elapsed':'30'}
-    tasks['statements'] =  {'cal':True, 'monthly':False, 'when':'10'}
     return tasks
 
 def schedule_tasks(tasks):
@@ -103,5 +103,5 @@ if __name__ == '__main__':
                 show_modal(taskname, tasks)
         save_last_run(tasks)
         print("done loop")
-        time.sleep(5)
+        time.sleep(3600 * 24)
 
