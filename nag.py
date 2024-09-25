@@ -2,6 +2,7 @@
 
 """Check if there are tasks which are overdue. If so, nag the user."""
 import time
+import traceback
 import tkinter as tk
 from datetime import datetime, timedelta
 
@@ -50,23 +51,26 @@ def schedule_tasks(tasks):
        is overdue."""
     today = datetime.now()
     for taskname in tasks:
-        task = tasks[taskname]
-        if task.get('last_run') is None:
-            task['overdue'] = True
-            continue
-        if task.get('cal'):
-            if task.get('monthly'):
-                when = "{}-{}-{}".format(today.year, today.month, task['when'])
+        try:
+            task = tasks[taskname]
+            if task.get('last_run') is None:
+                task['overdue'] = True
+                continue
+            if task.get('cal'):
+                if task.get('monthly'):
+                    when = "{}-{}-{}".format(today.year, today.month, task['when'])
+                else:
+                    pieces = task['when'].split('/')
+                    when = "{}-{}-{}".format(today.year, pieces[0], pieces[1])
+                scheduled = datetime.strptime(when, "%Y-%m-%d")
+                if scheduled > task['last_run']:
+                    task['overdue'] = True
             else:
-                pieces = task['when'].split('/')
-                when = "{}-{}-{}".format(today.year, pieces[0], pieces[1])
-            scheduled = datetime.strptime(when, "%Y-%m-%d")
-            if scheduled > task['last_run']:
-                task['overdue'] = True
-        else:
-            scheduled = task['last_run'] + timedelta(days=task['elapsed'])
-            if scheduled > task['last_run']:
-                task['overdue'] = True
+                scheduled = task['last_run'] + timedelta(days=int(task['elapsed']))
+                if today > scheduled:
+                    task['overdue'] = True
+        except Exception:
+            traceback.print_exc()
 
 def mark_as_done(taskname, tasks):
     print("done with {}".format(taskname))
