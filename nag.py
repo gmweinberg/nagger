@@ -63,7 +63,7 @@ def schedule_tasks(tasks):
                     pieces = task['when'].split('/')
                     when = "{}-{}-{}".format(today.year, pieces[0], pieces[1])
                 scheduled = datetime.strptime(when, "%Y-%m-%d")
-                if scheduled > task['last_run']:
+                if scheduled > task['last_run'] and today > scheduled:
                     task['overdue'] = True
             else:
                 scheduled = task['last_run'] + timedelta(days=int(task['elapsed']))
