@@ -37,10 +37,10 @@ def load_tasks():
        calendar is monthly or anual (monthly true)
        and a date (ay of month or month/day)"""
     tasks = {}
-    tasks['est1'] = {'cal':True, 'monthly':False, 'when':'4/12'}
-    tasks['est2'] = {'cal':True, 'monthly':False, 'when':'6/12'}
-    tasks['est3'] = {'cal':True, 'monthly':False, 'when':'9/12'}
-    tasks['est4'] = {'cal':True, 'monthly':False, 'when':'1/12'}
+    tasks['est1'] = {'cal':True, 'monthly':False, 'when':'4/08'}
+    tasks['est2'] = {'cal':True, 'monthly':False, 'when':'6/08'}
+    tasks['est3'] = {'cal':True, 'monthly':False, 'when':'9/08'}
+    tasks['est4'] = {'cal':True, 'monthly':False, 'when':'1/08'}
     tasks['statements'] =  {'cal':True, 'monthly':True, 'when':'10'}
     tasks['draino'] = {'cal':False, 'elapsed':'60'}
     tasks['vacuum'] = {'cal':False, 'elapsed':'30'}
